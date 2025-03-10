@@ -145,8 +145,7 @@ export const parse = async (inputCSVFile: string): Promise<TParsingResult> => {
         totalCredit = round2(totalCredit + credit);
 
         // Add to grouping map for records (Bonus)
-        const key = `${dateStr}-${label}`;
-        processRecordItem(recordItem, currentAccount, recordItemMap, key);
+        processRecordItem(recordItem, currentAccount, recordItemMap, label);
       }
     }
 

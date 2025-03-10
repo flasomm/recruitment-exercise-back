@@ -64,13 +64,10 @@ describe("With sample 1", () => {
       }
     });
 
-    test.skip(`should contain a specific record`, async () => {
+    test(`should contain a specific record`, async () => {
       const result = await parse(SAMPLE_1);
       const sampleRecord = result.records?.find((r) =>
-        r.recordItems.some((item) => {
-          console.log(item.label);
-          return item.label.includes("EDF ENTREPRISES");
-        })
+        r.recordItems.some((item) => item.label.includes("Virement Fonds Travaux"))
       );
 
       expect(sampleRecord).toBeDefined();
@@ -137,10 +134,10 @@ describe("With sample 3", () => {
       }
     });
 
-    test.skip(`should contain a specific record`, async () => {
+    test(`should contain a specific record`, async () => {
       const result = await parse(SAMPLE_3);
       const sampleRecord = result.records?.find((r) =>
-        r.recordItems.some((item) => item.label.includes("EDF ENTREPRISES"))
+        r.recordItems.some((item) => item.label.includes("Répartition des charges"))
       );
 
       expect(sampleRecord).toBeDefined();
