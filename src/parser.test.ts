@@ -19,15 +19,23 @@ describe("With sample 1", () => {
         totalDebit: 90667.3,
         totalCredit: 90667.3,
       };
-      expect(result.balance.totalDebit).toBeCloseTo(expectedResult.totalDebit, 2);
-      expect(result.balance.totalCredit).toBeCloseTo(expectedResult.totalCredit, 2);
+      expect(result.balance.totalDebit).toBeCloseTo(
+        expectedResult.totalDebit,
+        2
+      );
+      expect(result.balance.totalCredit).toBeCloseTo(
+        expectedResult.totalCredit,
+        2
+      );
     });
   });
 
   describe("Detailed validations", () => {
     test(`Check accounts 401`, async () => {
       const result = await parse(SAMPLE_1);
-      const accounts401 = result.accounts.filter((a) => a.code.startsWith("401"));
+      const accounts401 = result.accounts.filter((a) =>
+        a.code.startsWith("401")
+      );
       expect(accounts401.length).toBe(14);
     });
 
@@ -67,11 +75,16 @@ describe("With sample 1", () => {
     test(`should contain a specific record`, async () => {
       const result = await parse(SAMPLE_1);
       const sampleRecord = result.records?.find((r) =>
-        r.recordItems.some((item) => item.label.includes("Virement Fonds Travaux"))
+        r.recordItems.some((item) =>
+          item.label.includes("Virement Fonds Travaux")
+        )
       );
 
       expect(sampleRecord).toBeDefined();
-      expect(sampleRecord?.totalDebit).toBeCloseTo(sampleRecord?.totalCredit || 0, 2);
+      expect(sampleRecord?.totalDebit).toBeCloseTo(
+        sampleRecord?.totalCredit || 0,
+        2
+      );
     });
   });
 });
@@ -89,15 +102,23 @@ describe("With sample 3", () => {
         totalDebit: 152401.05,
         totalCredit: 152401.05,
       };
-      expect(result.balance.totalDebit).toBeCloseTo(expectedResult.totalDebit, 2);
-      expect(result.balance.totalCredit).toBeCloseTo(expectedResult.totalCredit, 2);
+      expect(result.balance.totalDebit).toBeCloseTo(
+        expectedResult.totalDebit,
+        2
+      );
+      expect(result.balance.totalCredit).toBeCloseTo(
+        expectedResult.totalCredit,
+        2
+      );
     });
   });
 
   describe("Detailed validations", () => {
     test(`Check accounts 401`, async () => {
       const result = await parse(SAMPLE_3);
-      const accounts401 = result.accounts.filter((a) => a.code.startsWith("401"));
+      const accounts401 = result.accounts.filter((a) =>
+        a.code.startsWith("401")
+      );
       expect(accounts401.length).toBe(20);
     });
 
@@ -137,11 +158,16 @@ describe("With sample 3", () => {
     test(`should contain a specific record`, async () => {
       const result = await parse(SAMPLE_3);
       const sampleRecord = result.records?.find((r) =>
-        r.recordItems.some((item) => item.label.includes("Répartition des charges"))
+        r.recordItems.some((item) =>
+          item.label.includes("Répartition des charges")
+        )
       );
 
       expect(sampleRecord).toBeDefined();
-      expect(sampleRecord?.totalDebit).toBeCloseTo(sampleRecord?.totalCredit || 0, 2);
+      expect(sampleRecord?.totalDebit).toBeCloseTo(
+        sampleRecord?.totalCredit || 0,
+        2
+      );
     });
   });
 });
